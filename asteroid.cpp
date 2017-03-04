@@ -7,6 +7,9 @@ Asteroid::Asteroid(QSize window)
 
     unsigned int numberPoint(random(3, 8));
 
+    if(!numberPoint % 2)
+        numberPoint--;
+
     QPolygonF poly;
 
     unsigned int xmin(x - 50);
@@ -14,10 +17,23 @@ Asteroid::Asteroid(QSize window)
     unsigned int ymin(y - 50);
     unsigned int ymax(y + 50);
 
+
     for(unsigned int i(0) ; i < numberPoint ; i++) {
-        unsigned int xpoint(random(xmin, xmax));
+        /*unsigned int xpoint(random(xmin, xmax));
         unsigned int ypoint(random(ymin, ymax));
-        QPoint newPoint(xpoint, ypoint);
+
+        QPoint newPoint(xpoint, ypoint);*/
+
+        int r = random(25, 50);
+
+        int ang = 360 / numberPoint;
+        int actAngl = i * ang;
+
+        int xp = r * cos(actAngl) + x;
+        int yp = r * sin(actAngl) + y;
+
+        QPoint newPoint(xp, yp);
+
         poly << newPoint;
     }
 

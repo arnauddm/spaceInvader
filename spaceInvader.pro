@@ -24,13 +24,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp \
-    game.cpp \
     player.cpp \
     ball.cpp \
-    asteroid.cpp
+    asteroid.cpp \
+    menu.cpp \
+    spaceinvader.cpp
 
 HEADERS  += \
-    game.hpp \
     player.hpp \
     ball.hpp \
-    asteroid.hpp
+    asteroid.hpp \
+    spaceinvader.hpp \
+    menu.hpp
+
+FORMS += \
+    menu.ui

@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QTimer>
 #include <QObject>
+#include <QtMath>
 
 class Asteroid : public QGraphicsPolygonItem
 {

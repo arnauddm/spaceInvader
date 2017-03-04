@@ -1,10 +1,8 @@
 #include "ball.hpp"
 
-Ball::Ball(const unsigned int _x, const unsigned int _y)
+Ball::Ball(const unsigned int _x, const unsigned int _y) :
+    x(_x), y(_y)
 {
-    x = _x;
-    y = _y;
-
     setRect(x, y, 10, 10);
 
     timer = new QTimer();
@@ -19,10 +17,9 @@ Ball::Ball(const unsigned int _x, const unsigned int _y)
     setBrush(brush);
 }
 
-Ball::Ball(QPoint pos) {
-    x = pos.x();
-    y = pos.y();
-
+Ball::Ball(QPoint pos) :
+    x(pos.x()), y(pos.y())
+{
     setRect(x, y, 10, 10);
 
     timer = new QTimer();
@@ -67,6 +64,9 @@ void Ball::move() {
              *
              *
              * *********************************/
+
+
+            //emit asteroidDestroyed();
         }
     }
 }

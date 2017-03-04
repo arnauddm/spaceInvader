@@ -1,12 +1,10 @@
-#include "game.hpp"
+#include "spaceinvader.hpp"
 
 #include <QDebug>
 
-Game::Game(const unsigned int _width, const unsigned int _height)
+SpaceInvader::SpaceInvader(const unsigned int _width, const unsigned int _height) :
+    height(_height), width(_width)
 {
-    height = _height;
-    width = _width;
-
     scene = new QGraphicsScene(this);
     setScene(scene);
     scene->setSceneRect(0, 0, width, height);
@@ -17,6 +15,7 @@ Game::Game(const unsigned int _width, const unsigned int _height)
 
 
     player = new Player(width / 2, height - 50, 50, 50);
+
     scene->addItem(player);
 
     newAsteroid = new QTimer();
@@ -29,7 +28,7 @@ Game::Game(const unsigned int _width, const unsigned int _height)
     newAsteroid->start(2 * 1000);
 }
 
-void Game::keyPressEvent(QKeyEvent *event) {
+void SpaceInvader::keyPressEvent(QKeyEvent *event) {
     switch (event->key()) {
     case Qt::Key_Left:
         player->leftMove();
@@ -42,8 +41,13 @@ void Game::keyPressEvent(QKeyEvent *event) {
     case Qt::Key_Space: {
         Ball *ball = new Ball(player->getBallPos());
         scene->addItem(ball);
+
         break;
     }
+
+    case Qt::Key_Escape:
+        close();
+        break;
 
     default:
         break;
